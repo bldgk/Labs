@@ -1,0 +1,11 @@
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\NMathPremium.dll
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\Microsoft.Solver.Foundation.dll
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\NMathPremium.xml
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\CryptographyLabrary.dll
+W:\Projects\Visual Studio\KKLab1\ConsoleApplication1\bin\Debug\CryptographyLabrary.pdb
