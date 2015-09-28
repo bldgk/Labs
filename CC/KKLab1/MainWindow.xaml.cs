@@ -16,7 +16,6 @@ namespace KKLab1
         WindowTypeEncrypt WindowTypeEncrypt;
         WindowCalc WindowCalc;
 
-
         Cipher Cipher;
         TextBox textbox = null;
         public MainWindow()

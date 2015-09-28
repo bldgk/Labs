@@ -33,6 +33,8 @@
     <Reference Include="NMathPremium, Version=6.1.0.10, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +55,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RSA.cs" />
     <Compile Include="Shtirliz.cs" />
     <Compile Include="Tritemius.cs" />
     <Compile Include="XOR.cs" />
