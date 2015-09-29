@@ -37,13 +37,7 @@ namespace CryptographyLabrary
             return EncryptedText;
         }
 
-        public int EncodingCharIndex(int CharIndex, int RNSIndex)
-        {
-            int NewCharIndex = 0;
-            NewCharIndex = (CharIndex + RNSIndex) % Alphabet.Length;
-
-            return NewCharIndex;
-        }
+        public int EncodingCharIndex(int CharIndex, int RNSIndex) => (CharIndex + RNSIndex) % Alphabet.Length;
 
         public string GenerateRNS(string gamma, int length)
         {
@@ -79,20 +73,7 @@ namespace CryptographyLabrary
 
             return DecryptedText;
         }
-        public int DecodingCharIndex(int CharIndex, int RNSIndex)
-        {
-            int NewCharIndex = 0;
-            NewCharIndex = (CharIndex - RNSIndex) % Alphabet.Length;
-            if ((CharIndex - RNSIndex) < 0)
-            {
-                NewCharIndex = (Alphabet.Count() - Math.Abs((CharIndex - RNSIndex))) % Alphabet.Count();
-            }
-            else
-            {
-                NewCharIndex = ((CharIndex - RNSIndex)) % Alphabet.Count();
-            }
-            return NewCharIndex;
-        }
-
+        public int DecodingCharIndex(int CharIndex, int RNSIndex) => ((CharIndex - RNSIndex) < 0) ? (Alphabet.Count() - Math.Abs((CharIndex - RNSIndex))) % Alphabet.Count() : ((CharIndex - RNSIndex)) % Alphabet.Count();
+        
     }
 }

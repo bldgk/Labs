@@ -95,35 +95,6 @@ namespace CryptographyLabrary
             }
             DecryptedBinaryText = DecryptedBinaryText.Remove(DecryptedBinaryText.Length - (DecryptedBinaryText.Length - BinaryTextLength));
 
-            //    #region It's for correct subtracted '0' that have added for set text multiple of 64bit
-            //if ((i * 64 + 64) == binaryText.Length)
-            //{
-            //    StringBuilder last_text = new StringBuilder(FinalText.TrimEnd('0'));
-
-            //    int count = FinalText.Length - last_text.Length;
-
-            //    if ((count % 8) != 0)
-            //    {
-            //        count = 8 - (count % 8);
-            //    }
-
-            //    string append_text = "";
-
-            //    for (int k = 0; k < count; k++)
-            //    {
-            //        append_text += "0";
-            //    }
-
-            //    DecryptedTextBuilder.Append(last_text.ToString() + append_text);
-            //}
-            //#endregion
-            //else
-            //{
-            //    //      DecryptedTextBuilder.Append(FinalText);
-            //}
-
-
-
             String DecryptedCharIndexes = Conversion.FromBinaryToText(DecryptedBinaryText);
             return DecryptedText.Append(Conversion.FromBinaryToText(DecryptedBinaryText)).ToString();
 
@@ -175,14 +146,8 @@ namespace CryptographyLabrary
 
             return P_sBoxedText;
         }
-        public String P(String text)
-        {
-            String PermutatedText = "";
-
-            PermutatedText = this.DoPermutation(text, DESData.PermutationP_blocks);
-
-            return PermutatedText;
-        }
+        public String P(String text) => this.DoPermutation(text, DESData.PermutationP_blocks);
+        
         public String S_BlockPermutation(String text)
         {
             StringBuilder TransformedText = new StringBuilder(32);
@@ -195,12 +160,8 @@ namespace CryptographyLabrary
 
             return TransformedText.ToString();
         }
-        public string E_Selection(string Rn_1)
-        {
-            string ExpandedText = this.DoPermutation(Rn_1, DESData.PermutationKeyExtension);
-
-            return ExpandedText;
-        }
+        public string E_Selection(string Rn_1) => this.DoPermutation(Rn_1, DESData.PermutationKeyExtension);
+        
         public string XOR(string text1, string text2)
         {
             if (text1.Length != text2.Length)
@@ -225,10 +186,8 @@ namespace CryptographyLabrary
 
             return XORed_Text.ToString();
         }
-        public bool IsEnough(int i, bool IsReverse)
-        {
-            return (IsReverse == false) ? i < 16 : i >= 0;
-        }
+        public bool IsEnough(int i, bool IsReverse) => (IsReverse == false) ? i < 16 : i >= 0;
+
         public string DoPermutation(string text, int[,] order)
         {
             string PermutatedText = "";
@@ -251,14 +210,10 @@ namespace CryptographyLabrary
 
             return PermutatedText.ToString();
         }
-        public string SetLeftHalvesKey(string text)
-        {
-            return this.SetHalvesKey(true, text);
-        }
-        public string SetRightHalvesKey(string text)
-        {
-            return this.SetHalvesKey(false, text);
-        }
+        public string SetLeftHalvesKey(string text) => this.SetHalvesKey(true, text);
+        
+        public string SetRightHalvesKey(string text) => this.SetHalvesKey(false, text);
+       
         public string SetHalvesKey(bool IsLeft, string text)
         {
             if ((text.Length % 8) != 0)
@@ -297,10 +252,8 @@ namespace CryptographyLabrary
 
             return keys;
         }
-        public String LeftShift(String text)
-        {
-            return this.LeftShift(text, 1);
-        }
+        public String LeftShift(String text) => this.LeftShift(text, 1);
+
         public String LeftShift(String text, int count)
         {
             if (count < 1)

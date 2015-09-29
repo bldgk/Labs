@@ -78,10 +78,8 @@ namespace CryptographyLabrary
 
             return BinaryString;
         }
-        public static String FromTextToBinary(String text)
-        {
-            return FromHexToBinary(FromTextToHex(text));
-        }
+        public static String FromTextToBinary(String text) => FromHexToBinary(FromTextToHex(text));
+
         public static String FromBinaryToText(String BinaryText)
         {
             StringBuilder text = new StringBuilder(BinaryText.Length / 8);
@@ -90,7 +88,6 @@ namespace CryptographyLabrary
             {
                 String word = BinaryText.Substring(i * 8, 8);
                 text.Append((char)Convert.ToInt32(word, 2));
-                //text += (char)Convert.ToInt32(word, 16);
             }
 
             return text.ToString();

@@ -45,12 +45,14 @@
         <GroupBox x:Name="groupBox" Grid.Column="2" Grid.Row="3" Grid.RowSpan="8" BorderBrush="{x:Null}" BorderThickness="0">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="22*"/>
-                    <RowDefinition Height="24*"/>
-                    <RowDefinition Height="23*"/>
-                    <RowDefinition Height="22*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="18*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="21*"/>
+                    <RowDefinition Height="17*"/>
+                    <RowDefinition Height="17*"/>
+                    <RowDefinition Height="19*"/>
+                    <RowDefinition Height="17*"/>
+                    <RowDefinition Height="17*"/>
+                    <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
@@ -64,6 +66,7 @@
                 <RadioButton x:Name="radioButton_Cycle" Content="Шифр циклічний" Grid.ColumnSpan="2" Grid.Row="3" Checked="radioButton_Cycle_Checked" />
                 <RadioButton x:Name="radioButton_shtirl" Content="Шифр Штірліца" Grid.ColumnSpan="2" Grid.Row="4" Checked="radioButton_shtirl_Checked"  />
                 <RadioButton x:Name="radioButton_des" Content="Шифр DES" Grid.ColumnSpan="2" Grid.Row="5" Checked="radioButton_des_Checked"  />
+                <RadioButton x:Name="radioButton_RSA" Content="Шифр RSA" Grid.ColumnSpan="2" Grid.Row="6" Checked="radioButton_RSA_Checked"  />
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBox_alphabet" Grid.Column="6" Grid.Row="3"  Grid.ColumnSpan="6" Grid.RowSpan="6" BorderThickness="0" Margin="0,0,6,10" >

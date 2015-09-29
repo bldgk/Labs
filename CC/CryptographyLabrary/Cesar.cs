@@ -24,13 +24,8 @@ namespace CryptographyLabrary
             }
             return EncryptedText;
         }
-        public int EncodingCharIndex(int CharIndex)
-        {
-            int NewCharIndex = 0;
-            NewCharIndex = (CharIndex + Step) % Alphabet.Count();
-
-            return NewCharIndex;
-        }
+        public int EncodingCharIndex(int CharIndex) => (CharIndex + Step) % Alphabet.Count();
+        
         public string Decryption(string text)
         {
             string DecryptedText = "";

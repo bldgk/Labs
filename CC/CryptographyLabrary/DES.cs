@@ -131,14 +131,8 @@ namespace CryptographyLabrary
 
             return P_sBoxedText;
         }
-        public String P(String text)
-        {
-            String PermutatedText = "";
+        public String P(String text) => this.DoPermutation(text, DESData.PermutationP_blocks);
 
-            PermutatedText = this.DoPermutation(text, DESData.PermutationP_blocks);
-
-            return PermutatedText;
-        }
         public String S_BlockPermutation(String text)
         {
             StringBuilder TransformedText = new StringBuilder(32);
@@ -151,12 +145,8 @@ namespace CryptographyLabrary
 
             return TransformedText.ToString();
         }
-        public String E_Selection(String Rn_1)
-        {
-            string ExpandedText = this.DoPermutation(Rn_1, DESData.PermutationKeyExtension);
-
-            return ExpandedText;
-        }
+        public String E_Selection(String Rn_1) => this.DoPermutation(Rn_1, DESData.PermutationKeyExtension);
+      
         public String XOR(String text1, String text2)
         {
             if (text1.Length != text2.Length)
@@ -181,10 +171,8 @@ namespace CryptographyLabrary
 
             return XORed_Text.ToString();
         }
-        public Boolean IsEnough(Int32 i, Boolean IsReverse)
-        {
-            return (IsReverse == false) ? i < 16 : i >= 0;
-        }
+        public Boolean IsEnough(Int32 i, Boolean IsReverse) => (IsReverse == false) ? i < 16 : i >= 0;
+
         public String DoPermutation(String text, Int32[,] order)
         {
             string PermutatedText = "";
@@ -207,14 +195,9 @@ namespace CryptographyLabrary
 
             return PermutatedText.ToString();
         }
-        public String SetLeftHalvesKey(String text)
-        {
-            return this.SetHalvesKey(true, text);
-        }
-        public String SetRightHalvesKey(String text)
-        {
-            return this.SetHalvesKey(false, text);
-        }
+        public String SetLeftHalvesKey(String text) => this.SetHalvesKey(true, text);
+        public String SetRightHalvesKey(String text) => this.SetHalvesKey(false, text);
+        
         public String SetHalvesKey(Boolean IsLeft, String text)
         {
             if ((text.Length % 8) != 0)
@@ -253,10 +236,8 @@ namespace CryptographyLabrary
 
             return keys;
         }
-        public String LeftShift(String text)
-        {
-            return this.LeftShift(text, 1);
-        }
+        public String LeftShift(String text) => this.LeftShift(text, 1);
+
         public String LeftShift(String text, Int32 count)
         {
             if (count < 1)

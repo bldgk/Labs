@@ -83,5 +83,10 @@ namespace KKLab1
         {
 
         }
+
+        private void radioButton_RSA_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

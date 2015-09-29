@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptographyLabrary
 {
-    public class Tritemius:Cipher
+    public class Tritemius : Cipher
     {
         public int Step { get; set; }
         public char[] Alphabet { get; set; }
@@ -27,19 +27,11 @@ namespace CryptographyLabrary
             }
             return EncryptedText;
         }
-        public int EncryptStep(int CharPostition)
-        {
-            Step = 3 * CharPostition + 2;
-            return Step;
+        public int EncryptStep(int CharPostition) => 3 * CharPostition + 2;
 
-        }
-        public int EncodingCharIndex(int CharIndex, int CharPosition)
-        {
-            int NewCharIndex = 0;
-            NewCharIndex = (CharIndex + EncryptStep(CharPosition)) % Alphabet.Count();
+        public int EncodingCharIndex(int CharIndex, int CharPosition) => (CharIndex + EncryptStep(CharPosition)) % Alphabet.Count();
 
-            return NewCharIndex;
-        }
+
         public string Decryption(String text)
         {
             string DecryptedText = "";
@@ -52,24 +44,9 @@ namespace CryptographyLabrary
             }
             return DecryptedText;
         }
-        public int DecryptStep(int CharPostition)
-        {
-            Step = 3 * CharPostition + 2;
-            return Step;
+        public int DecryptStep(int CharPostition) => 3 * CharPostition + 2;
 
-        }
-        public int DecodingCharIndex(int CharIndex, int CharPosition)
-        {
-            int NewCharIndex = 0;
-            if ((CharIndex - DecryptStep(CharPosition)) < 0)
-            {
-                NewCharIndex = (Alphabet.Count() - Math.Abs((CharIndex - DecryptStep(CharPosition)))) % Alphabet.Count();
-            }
-            else
-            {
-                NewCharIndex = ((CharIndex - DecryptStep(CharPosition))) % Alphabet.Count();
-            }
-            return NewCharIndex;
-        }
+        public int DecodingCharIndex(int CharIndex, int CharPosition) => ((CharIndex - DecryptStep(CharPosition)) < 0) ? (Alphabet.Count() - Math.Abs((CharIndex - DecryptStep(CharPosition)))) % Alphabet.Count() : ((CharIndex - DecryptStep(CharPosition))) % Alphabet.Count();
+
     }
 }

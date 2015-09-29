@@ -34,42 +34,40 @@ namespace KKLab1
 
         private void mi_typeencrypt_Click(object sender, RoutedEventArgs e)
         {
-            string s = "00000000000000010000001000001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001000010010000100100001001";
-            MessageBox.Show(Convert.ToString(s.Length));
 
             WindowTypeEncrypt = new WindowTypeEncrypt();
             WindowTypeEncrypt.Owner = this;
             WindowTypeEncrypt.ShowDialog();
             if (WindowTypeEncrypt.DialogResult.HasValue && WindowTypeEncrypt.DialogResult.Value)
             {
+
                 if (WindowTypeEncrypt.radioButton_cezar.IsChecked == true)
-                {
                     Cipher = new Cesar();
-                }
                 else if (WindowTypeEncrypt.radioButton_tritemius.IsChecked == true)
-                {
+
                     Cipher = new Tritemius();
-                }
+
                 else if (WindowTypeEncrypt.radioButton_xor.IsChecked == true)
-                {
+
                     Cipher = new XOR();
-                }
+
                 else if (WindowTypeEncrypt.radioButton_Cycle.IsChecked == true)
-                {
                     Cipher = new Cycle("1 0 1 1");
-                }
+
                 else if (WindowTypeEncrypt.radioButton_shtirl.IsChecked == true)
-                {
+
                     Cipher = new Shtirliz();
-                }
+
                 else if (WindowTypeEncrypt.radioButton_des.IsChecked == true)
-                {
+
                     Cipher = new DES();
-                }
+
+                else if (WindowTypeEncrypt.radioButton_RSA.IsChecked == true)
+                    Cipher = new RSA();
                 Cipher.Alphabet = WindowTypeEncrypt.AlphabetString.ToArray();
             }
         }
-        #region File
+            #region File
         private void mi_newfile_Click(object sender, RoutedEventArgs e)
         {
             TabItem tabitem = null;
