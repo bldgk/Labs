@@ -66,17 +66,19 @@ namespace ConsoleApplication1
                 Console.WriteLine("Key "+ n.ToString());
             Console.WriteLine("n = " + RSA.N(RSA.KeysPQ[0], RSA.KeysPQ[1]));
             Console.WriteLine("phi = " + RSA.Phi(RSA.N(RSA.KeysPQ[0], RSA.KeysPQ[1])));
-            
-
-            Console.WriteLine();
-            Double enc = RSA.Encryption(65);
-            Console.WriteLine("Encrypted Text = " + enc.ToString());
-
-            Console.WriteLine();
-            Double dec = RSA.Decryption((Convert.ToInt64(enc)));
-            
-            Console.WriteLine("Decrypted Text = " + dec.ToString());
-
+            Console.WriteLine("Enter text ");
+            String text = Console.ReadLine();
+            Console.WriteLine("Text " +text );
+            //Console.WriteLine("Encryption if integers ");
+            //Double enc = RSA.Encryption(Convert.ToInt64(text));
+            //Console.WriteLine("Encrypted Text = " + enc.ToString());
+            //Double dec = RSA.Decryption((Convert.ToInt64(enc)));
+            //Console.WriteLine("Decrypted Text = " + dec.ToString());
+            //Console.WriteLine();
+            String encs = RSA.Encryption(text);
+            Console.WriteLine("Encrypted Text = " + encs.ToString());
+            String decs = RSA.Decryption(encs);
+            Console.WriteLine("Decrypted Text = " + decs.ToString());
             Console.ReadKey();
             #endregion
 

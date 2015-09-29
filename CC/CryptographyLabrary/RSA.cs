@@ -6,6 +6,7 @@ using System.Threading;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using static System.Math;
 
 namespace CryptographyLabrary
 {
@@ -30,52 +31,50 @@ namespace CryptographyLabrary
         {
 
             PublicKey = MakePublicKey();
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
             String EncryptedText = String.Empty;
-            //Byte[] Text = ByteConverter.GetBytes(text);
-            //foreach (Byte TextByte in Text)
-            //{
-            Calculation Calculation = new Calculation(65, PublicKey[0], PublicKey[1]);
-            EncryptedText += Calculation.GetRemainder().ToString();
-
+            foreach (Char  Char in text)
+            {
+                Calculation Calculation = new Calculation(Char, PublicKey[0], PublicKey[1]);
+                EncryptedText += Calculation.GetRemainder().ToString() + ",";
+            }
             return EncryptedText;
         }
 
-        public String Decryption(String text)
+        public String Decryption(String Text)
         {
             List<Int64> Publickey = GetPublicKey();
             List<Int64> PrivateKey = MakePrivateKey(Publickey);
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
             String DecryptedText = String.Empty;
-            //Byte[] Text = ByteConverter.GetBytes(text);
-            Calculation Calculation = new Calculation(2790, PrivateKey[0], PrivateKey[1]);
-            DecryptedText += Calculation.GetRemainder().ToString();
+            List<String> IntegersInText = Text.Split(',').ToList();
+            IntegersInText.RemoveAt(IntegersInText.Count - 1);
+            List<Int64> Chars = new List<Int64>();
+            foreach (String Integer in IntegersInText)
+                Chars.Add(Convert.ToInt64(Integer));
+            foreach (Int64 Char in Chars)
+            {
+                
+                Calculation Calculation = new Calculation(Char, PrivateKey[0], PrivateKey[1]);
+                DecryptedText += Convert.ToChar(Convert.ToInt64(Calculation.GetRemainder()));//.ToString();
+            }
             return DecryptedText;
         }
         public Double Encryption(Int64 text)
         {
             
-           PublicKey = MakePublicKey();
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
+            PublicKey = MakePublicKey();
             Double EncryptedText = 0;
-            //Byte[] Text = ByteConverter.GetBytes(text);
-            //foreach (Byte TextByte in Text)
-            //{
                 Calculation Calculation = new Calculation(text, PublicKey[0], PublicKey[1]);
             EncryptedText = Calculation.GetRemainder();
             
             return EncryptedText;
         }
-
         public Double Decryption(Int64 text)
         {
             List<Int64> Publickey = GetPublicKey();
             List<Int64> PrivateKey = MakePrivateKey(Publickey);
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
-            Double DecryptedText = 0;//String.Empty;
-            //Byte[] Text = ByteConverter.GetBytes(text);
+            Double DecryptedText = 0;
             Calculation Calculation = new Calculation(text,PrivateKey[0],PrivateKey[1]);
-            DecryptedText = Calculation.GetRemainder();//.ToString();
+            DecryptedText = Calculation.GetRemainder();
             return DecryptedText;
         }
         public List<Int64> MakePrivateKey(List<Int64>PublicKey)
@@ -85,10 +84,7 @@ namespace CryptographyLabrary
             Privatekey.Add(PublicKey[1]);
             return Privatekey;
         }
-        public List<Int64> GetPublicKey()
-        {
-            return PublicKey;
-        }
+        public List<Int64> GetPublicKey() => PublicKey;      
         public List<Int64> MakePublicKey()
         {
             List<Int64> Publickey = new List<Int64>();
@@ -98,7 +94,6 @@ namespace CryptographyLabrary
             Publickey.Add(N(KeysPQ[0], KeysPQ[1]));
             return Publickey;
         }
-
         public List<Int64> GeneratePQKeys()
         {
             List<Int64> KeysPQs = new List<Int64>();
@@ -117,8 +112,6 @@ namespace CryptographyLabrary
             while (IsPrime(Q) == false);
             KeysPQs.Add(P);
             KeysPQs.Add(Q);
-            //KeysPQs.Add(61);
-            //KeysPQs.Add(53);
             return KeysPQs;
         }
         public  Int64 E(Int64 Phi)
@@ -156,18 +149,9 @@ namespace CryptographyLabrary
                 B = A % (A = B);
             return A;
         }
-        public Boolean IsCoprime(Int64 A, Int64 B)
-        {
-            return (GCD(A, B) == 1) ? true : false;
-        }
-        public Int64 N(Int64 P, Int64 Q)
-        {
-            return P * Q;
-        }
-        public Int64 Phi(Int64 P, Int64 Q)
-        {
-            return (P - 1) * (Q - 1);
-        }
+        public Boolean IsCoprime(Int64 A, Int64 B) => (GCD(A, B) == 1) ? true : false;
+        public Int64 N(Int64 P, Int64 Q) => P * Q;        
+        public Int64 Phi(Int64 P, Int64 Q) => (P - 1) * (Q - 1);       
         public Int64 Phi(Int64 N)
         {
             Int64 Phi = 1;
@@ -289,10 +273,8 @@ def egcd(a, b):
             new Random(Interlocked.Increment(ref seed))
         );
 
-        public static Random GetThreadRandom()
-        {
-            return randomWrapper.Value;
-        }
+        public static Random GetThreadRandom() => randomWrapper.Value;
+
     }
     public class Calculation
     {
@@ -336,14 +318,7 @@ def egcd(a, b):
             }
             return Remainder;
         }
-
-        public Double NextRemainder(Double CurrentRemainder, Char B)
-        {
-            if (B == '1')
-                return (/*Math.Pow(CurrentRemainder, 2)*/CurrentRemainder* CurrentRemainder * Base) % Divider;
-            else
-                return (/*Math.Pow(CurrentRemainder, 2)*/CurrentRemainder* CurrentRemainder) % Divider;
-
-        }
+        public Double NextRemainder(Double CurrentRemainder, Char B) => (B == '1') ? (Pow(CurrentRemainder, 2) * Base) % Divider : Pow(CurrentRemainder, 2) % Divider;
+    
     }
 }
