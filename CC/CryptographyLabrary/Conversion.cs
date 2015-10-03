@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptographyLabrary
 {
     public class Conversion
     {
 
-        public static String FromIntegerToBinary(int IntegerNumber)
+        public static string FromIntegerToBinary(int IntegerNumber)
         {
             StringBuilder BinaryNumberStr = new StringBuilder();
-
             int BinaryNumber = IntegerNumber;
             int Factorial = 128;
-
             for (int i = 0; i < 8; i++)
             {
                 if (BinaryNumber >= Factorial)
@@ -31,43 +26,36 @@ namespace CryptographyLabrary
             }
             return BinaryNumberStr.ToString();
         }
-
-        public static String FromTextToHex(String text)
+        public static string FromTextToHex(string text)
         {
-            String HexString = "";
-
+            string HexString = "";
             foreach (char word in text)
             {
                 HexString += String.Format("{0:X}", Convert.ToInt32(word));
             }
-
             return HexString;
         }
-
-        public static String FromHexToBinary(String HexString)
+        public static string FromHexToBinary(string HexString)
         {
-            String BinaryString = "";
-
+            string BinaryString = "";
             try
             {
-                for (Int32 i = 0; i < HexString.Length; i++)
+                for (int i = 0; i < HexString.Length; i++)
                 {
-                    Int32 Hex = Convert.ToInt32(HexString[i].ToString(), 16);
-
-                    Int32 Factorial = 8;
-
-                    for (Int32 j = 0; j < 4; j++)
+                    int Hex = Convert.ToInt32(HexString[i].ToString(), 16);
+                    int Factor = 8;
+                    for (int j = 0; j < 4; j++)
                     {
-                        if (Hex >= Factorial)
+                        if (Hex >= Factor)
                         {
-                            Hex -= Factorial;
+                            Hex -= Factor;
                             BinaryString += "1";
                         }
                         else
                         {
                             BinaryString += "0";
                         }
-                        Factorial /= 2;
+                        Factor /= 2;
                     }
                 }
             }
@@ -75,21 +63,17 @@ namespace CryptographyLabrary
             {
                 Console.WriteLine(e.Message + " - wrong hexa integer format.");
             }
-
             return BinaryString;
         }
-        public static String FromTextToBinary(String text) => FromHexToBinary(FromTextToHex(text));
-
-        public static String FromBinaryToText(String BinaryText)
+        public static string FromTextToBinary(string text) => FromHexToBinary(FromTextToHex(text));
+        public static string FromBinaryToText(string BinaryText)
         {
             StringBuilder text = new StringBuilder(BinaryText.Length / 8);
-
             for (int i = 0; i < (BinaryText.Length / 8); i++)
             {
-                String word = BinaryText.Substring(i * 8, 8);
+                string word = BinaryText.Substring(i * 8, 8);
                 text.Append((char)Convert.ToInt32(word, 2));
             }
-
             return text.ToString();
         }
     }

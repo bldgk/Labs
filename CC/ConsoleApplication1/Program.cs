@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CryptographyLabrary;
-using System.Threading;
+using System.Collections.Generic;
+using static System.Math;
 
 namespace ConsoleApplication1
 {
@@ -14,18 +12,18 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose mode: 1 - DES, 2 - RSA Calc, 3 - RSA");
-            ;
+            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman");
             switch (Console.ReadLine())
             {
 
                 case "1": DESTest(); break;
-                case "2": RSACalc(); break;
+                case "2": ModCalc(); break;
                 case "3": RSATest(); break;
+                case "4": El_GammalTest(); break;
+                case "5": Diffie_Hellman(); break;
             }
-
-            Console.ReadKey();
-        }
+            
+        }              
         #region RSATest
         public static void RSATest()
         {
@@ -44,31 +42,31 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
         #endregion
-
         #region DES_test
         public static void DESTest()
         {
 
-            Cipher Cipher = new DES();
-            Cipher.Alphabet = "123456780".ToArray();
-            String Text = "12345678123456781234567812345678123456781"; //String Text = text;
+            DES Des = new DES();
+            Des.Alphabet = "123456780".ToArray();
+            Console.WriteLine("Enter text: ");
+            String Text = Console.ReadLine();// Rea//"12345678123456781234567812345678123456781"; //String Text = text;
             Console.WriteLine("Text: " + Text + "/n Length: " + Text.Length);
-            String encrtext = Cipher.Encryption(Text);
-            String decrtext = Cipher.Decryption(encrtext);
+            String encrtext = Des.Encryption(Text);
+            String decrtext = Des.Decryption(encrtext);
             Console.WriteLine("Encrypted by DES: \n" + encrtext + "\n Length = " + encrtext.Length);
             Console.WriteLine("Decrypted by DES: \n" + decrtext + "\n Length = " + decrtext.Length);
 
-            Cipher = new MyDES();
-            Cipher.Alphabet = "123456780".ToArray();
-            encrtext = Cipher.Encryption(Text);
-            decrtext = Cipher.Decryption(encrtext);
-            Console.WriteLine("Encrypted by myDES: \n" + encrtext + "\n Length = " + encrtext.Length);
-            Console.WriteLine("Decrypted by myDES: \n" + decrtext + "\n Length = " + decrtext.Length);
+            //Cipher = new MyDES();
+            //Cipher.Alphabet = "123456780".ToArray();
+            //encrtext = Cipher.Encryption(Text);
+            //decrtext = Cipher.Decryption(encrtext);
+            //Console.WriteLine("Encrypted by myDES: \n" + encrtext + "\n Length = " + encrtext.Length);
+            //Console.WriteLine("Decrypted by myDES: \n" + decrtext + "\n Length = " + decrtext.Length);
 
         }
         #endregion
-        #region RSACalcTest
-        public static void RSACalc()
+        #region ModCalcTest
+        public static void ModCalc()
         {
             Console.Write("Enter expression. \n Base: ");
             Int32 Base = Convert.ToInt32(Console.ReadLine());
@@ -76,11 +74,34 @@ namespace ConsoleApplication1
             Int32 Degree = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n Divider: ");
             Int32 Divider = Convert.ToInt32(Console.ReadLine());
-            Calculation Exp = new Calculation(Base, Degree, Divider);
+            ModCalculator Exp = new ModCalculator(Base, Degree, Divider);
             Console.WriteLine("\n Remainder: " + Exp.GetRemainder());
             Console.ReadKey();
         }
         #endregion
-
+        #region Diffie-HellmanTest
+        public static void Diffie_Hellman()
+        {
+            CDH Alice = new CDH();
+            CDH Bob = new CDH();
+            Alice.CreateLink(Bob);
+            Console.ReadKey();
+        }
+        #endregion
+        #region El-GammalTest
+        public static void El_GammalTest()
+        {
+            El_Gammal Alice = new El_Gammal();
+            El_Gammal Bob = new El_Gammal();
+            Alice.CreateLink(Bob);
+            Console.WriteLine("Enter text ");
+            string text = Console.ReadLine();
+            string bobtext = Bob.Encryption(text);
+            Console.WriteLine(bobtext);
+            string alicetext = Alice.Decryption(bobtext);
+            Console.WriteLine(alicetext);
+            Console.ReadKey();
+        }
+        #endregion
     }
 }

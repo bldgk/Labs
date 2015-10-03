@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptographyLabrary
 {
-    public class Cesar: Cipher
+    public class Cesar: ICipher
     {
         public int Step { get; set; }
         public char[] Alphabet { get; set; }
@@ -35,7 +32,6 @@ namespace CryptographyLabrary
             }
             return DecryptedText;
         }
-
         public int DecodingCharIndex(int CharIndex)
         {
             int NewCharIndex = 0;

@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.IO;
 using Microsoft.Win32;
 using CryptographyLabrary;
+using System.Diagnostics;
 
 namespace KKLab1
 {
@@ -16,7 +17,7 @@ namespace KKLab1
         WindowTypeEncrypt WindowTypeEncrypt;
         WindowCalc WindowCalc;
 
-        Cipher Cipher;
+        ICipher Cipher;
         TextBox textbox = null;
         public MainWindow()
         {
@@ -44,26 +45,19 @@ namespace KKLab1
                 if (WindowTypeEncrypt.radioButton_cezar.IsChecked == true)
                     Cipher = new Cesar();
                 else if (WindowTypeEncrypt.radioButton_tritemius.IsChecked == true)
-
                     Cipher = new Tritemius();
-
                 else if (WindowTypeEncrypt.radioButton_xor.IsChecked == true)
-
                     Cipher = new XOR();
-
                 else if (WindowTypeEncrypt.radioButton_Cycle.IsChecked == true)
                     Cipher = new Cycle("1 0 1 1");
-
                 else if (WindowTypeEncrypt.radioButton_shtirl.IsChecked == true)
-
                     Cipher = new Shtirliz();
-
                 else if (WindowTypeEncrypt.radioButton_des.IsChecked == true)
-
                     Cipher = new DES();
-
                 else if (WindowTypeEncrypt.radioButton_RSA.IsChecked == true)
                     Cipher = new RSA();
+                else if (WindowTypeEncrypt.radioButton_El_Gammal.IsChecked == true)
+                    Cipher = new El_Gammal();
                 Cipher.Alphabet = WindowTypeEncrypt.AlphabetString.ToArray();
             }
         }
@@ -154,6 +148,12 @@ namespace KKLab1
         {
             WindowCalc = new WindowCalc();
             WindowCalc.Show();
+        }
+
+        private void mi_Test_Click(object sender, RoutedEventArgs e)
+        {
+            Process Process = new Process();
+            Process.Start(@"W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe");
         }
     }
 }

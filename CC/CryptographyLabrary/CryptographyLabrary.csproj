@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cesar.cs" />
-    <Compile Include="Cipher.cs" />
+    <Compile Include="ICipher.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="Cycle.cs" />
     <Compile Include="DES.cs" />
+    <Compile Include="CDH.cs" />
+    <Compile Include="El-Gammal.cs" />
+    <Compile Include="ModCalculator.cs" />
     <Compile Include="MyDES.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -55,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RandomProvider.cs" />
     <Compile Include="RSA.cs" />
     <Compile Include="Shtirliz.cs" />
     <Compile Include="Tritemius.cs" />

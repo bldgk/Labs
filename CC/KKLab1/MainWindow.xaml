@@ -37,6 +37,7 @@
                 <MenuItem x:Name="mi_typeencrypt" Header="Спосіб кодування" HorizontalAlignment="Left" Click="mi_typeencrypt_Click" />
             </MenuItem>
             <MenuItem Name="mi_calculator" Header="Калькулятор" HorizontalAlignment="Left" Click="mi_calculator_Click" ></MenuItem>
+            <MenuItem Name="mi_Test" Header="Тест" Click="mi_Test_Click"></MenuItem>
         </Menu>
         <TabControl x:Name="tabControl_files" Grid.Column="1"  Grid.Row="1" BorderThickness="0" BorderBrush="{x:Null}" Background="#FF4B4B4B"/>
 
