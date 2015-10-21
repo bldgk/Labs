@@ -50,6 +50,7 @@
     <Compile Include="DES.cs" />
     <Compile Include="CDH.cs" />
     <Compile Include="El-Gammal.cs" />
+    <Compile Include="MD3.cs" />
     <Compile Include="ModCalculator.cs" />
     <Compile Include="MyDES.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

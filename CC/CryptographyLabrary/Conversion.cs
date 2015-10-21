@@ -76,5 +76,29 @@ namespace CryptographyLabrary
             }
             return text.ToString();
         }
+        //public static byte[] ToUTF8(string String) =>
+        //    Encoding.UTF8.GetBytes(String);
+        //public static byte[] ToUTF8(string String, int Index, int Count) =>
+        //    Encoding.UTF8.GetBytes(String.Substring(Index, Count));
+
+        //public static string FromUTF8(byte[] Bytes) =>
+        //    Encoding.UTF8.GetString(Bytes);
+        //public static string ToHex(byte Byte) =>
+        //    Byte.ToString("X2");
+
+        public static byte[] FromHex(string String)
+        {
+            if (String.Length % 2 != 0)
+                throw new ArgumentException("Length must be even");
+
+            var Bytes = new byte[String.Length >> 1];
+
+            for (int i = 0, j = 0; i < String.Length; i += 2, j++)
+            {
+                Bytes[j] = Byte.Parse(String.Substring(i, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            return Bytes;
+        }
     }
 }

@@ -3,6 +3,8 @@ using System.Linq;
 using CryptographyLabrary;
 using System.Collections.Generic;
 using static System.Math;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ConsoleApplication1
 {
@@ -12,7 +14,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman");
+            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman, 6 - MD5");
             switch (Console.ReadLine())
             {
 
@@ -21,13 +23,17 @@ namespace ConsoleApplication1
                 case "3": RSATest(); break;
                 case "4": El_GammalTest(); break;
                 case "5": Diffie_Hellman(); break;
+                case "6": MD5Test(); break;
             }
-            
-        }              
+
+        }
+     
+
+
         #region RSATest
         public static void RSATest()
         {
-            RSA RSA = new RSA();
+            CryptographyLabrary.RSA RSA = new CryptographyLabrary.RSA();
             foreach (var n in RSA.KeysPQ)
                 Console.WriteLine("Key " + n.ToString());
             Console.WriteLine("n = " + RSA.N(RSA.KeysPQ[0], RSA.KeysPQ[1]));
@@ -46,7 +52,7 @@ namespace ConsoleApplication1
         public static void DESTest()
         {
 
-            DES Des = new DES();
+            CryptographyLabrary.DES Des = new CryptographyLabrary.DES();
             Des.Alphabet = "123456780".ToArray();
             Console.WriteLine("Enter text: ");
             String Text = Console.ReadLine();// Rea//"12345678123456781234567812345678123456781"; //String Text = text;
@@ -102,6 +108,23 @@ namespace ConsoleApplication1
             Console.WriteLine(alicetext);
             Console.ReadKey();
         }
+        #endregion
+
+        #region MD5
+        public static void MD5Test()
+        {
+            MD3 md3 = new MD3();
+            Console.WriteLine("Enter text: ");
+            string source = Console.ReadLine();
+            Console.WriteLine("The MD5 hash of " + source + " is: ");
+            foreach (var b in md3.Hash(source))
+            {
+                Console.Write(b.ToHex().ToString().ToLower());
+            }
+            Console.WriteLine(".");
+            Console.ReadKey();
+        }
+
         #endregion
     }
 }
