@@ -61,6 +61,8 @@
     </Compile>
     <Compile Include="RandomProvider.cs" />
     <Compile Include="RSA.cs" />
+    <Compile Include="SHA1.cs" />
+    <Compile Include="SHA2.cs" />
     <Compile Include="Shtirliz.cs" />
     <Compile Include="Tritemius.cs" />
     <Compile Include="XOR.cs" />

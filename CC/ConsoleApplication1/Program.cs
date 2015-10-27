@@ -3,7 +3,6 @@ using System.Linq;
 using CryptographyLabrary;
 using System.Collections.Generic;
 using static System.Math;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace ConsoleApplication1
@@ -14,7 +13,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman, 6 - MD5");
+            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman, 6 - MD5, 7 - SHA1, 8 - SHA2");
             switch (Console.ReadLine())
             {
 
@@ -24,8 +23,10 @@ namespace ConsoleApplication1
                 case "4": El_GammalTest(); break;
                 case "5": Diffie_Hellman(); break;
                 case "6": MD5Test(); break;
+                case "7": SHA1Test(); break;
+                case "8": SHA2Test(); break;
             }
-
+            
         }
      
 
@@ -109,7 +110,6 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
         #endregion
-
         #region MD5
         public static void MD5Test()
         {
@@ -125,6 +125,27 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
 
+        #endregion
+        #region SHA1Test
+        public static void SHA1Test()
+        {
+            SHA1 sh = new SHA1();
+            Console.WriteLine("Enter text:");
+            string text = Console.ReadLine();
+            Console.WriteLine("Hash is " + sh.Hash(text).ToLower());
+            Console.ReadKey();
+        }
+
+        #endregion
+        #region SHA2Test
+        public static void SHA2Test()
+        {
+            SHA2 sh = new SHA2();
+            Console.WriteLine("Enter text:");
+            string text = Console.ReadLine();
+            Console.WriteLine("Hash is " + sh.Hash(text.ToUTF8()).ToLower());
+            Console.ReadKey();
+        }
         #endregion
     }
 }
