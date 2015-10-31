@@ -33,7 +33,7 @@ namespace CryptographyLabrary
                 maxLength = ((BinaryText.Length / 64) + 1) * 64;
                 BinaryText = BinaryText.PadRight(maxLength, '0');
             }
-            TextBinaryBy64bits = BinaryText.SplitInParts().ToList();
+            TextBinaryBy64bits = BinaryText.SplitInParts(64).ToList();
             foreach (string Part64 in TextBinaryBy64bits)
             {
                 for (int i = 0; i < (Part64.Length / 64); i++)
@@ -298,10 +298,10 @@ namespace CryptographyLabrary
     }
     static class StringExtensions
     {
-        public static IEnumerable<string> SplitInParts(this string s)
+        public static IEnumerable<string> SplitInParts(this string s, int size)
         {
-            for (var i = 0; i < s.Length; i += 64)
-                yield return s.Substring(i, Math.Min(64, s.Length - i));
+            for (var i = 0; i < s.Length; i += size)
+                yield return s.Substring(i, Math.Min(size, s.Length - i));
         }
     }
 }

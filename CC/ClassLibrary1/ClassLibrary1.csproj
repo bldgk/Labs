@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{149FE656-2511-434E-8519-6138CDE7DF63}</ProjectGuid>
+    <ProjectGuid>{D6DDBB7F-9E37-4FDA-AF62-657A8E618318}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CryptographyLabrary</RootNamespace>
-    <AssemblyName>CryptographyLabrary</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ClassLibrary1</RootNamespace>
+    <AssemblyName>ClassLibrary1</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NMathPremium, Version=6.1.0.10, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,45 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AES.cs" />
-    <Compile Include="Blowfish.cs" />
-    <Compile Include="Cesar.cs" />
-    <Compile Include="ICipher.cs" />
-    <Compile Include="Conversion.cs" />
-    <Compile Include="Cycle.cs" />
-    <Compile Include="DES.cs" />
-    <Compile Include="CDH.cs" />
-    <Compile Include="El-Gammal.cs" />
-    <Compile Include="MD3.cs" />
-    <Compile Include="ModCalculator.cs" />
-    <Compile Include="MyDES.cs" />
+    <Compile Include="b.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="RandomProvider.cs" />
-    <Compile Include="RSA.cs" />
-    <Compile Include="SHA1.cs" />
-    <Compile Include="SHA2.cs" />
-    <Compile Include="Shtirliz.cs" />
-    <Compile Include="Tritemius.cs" />
-    <Compile Include="XOR.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AESjs\aes.js" />
-    <Content Include="AESjs\bits.js" />
-    <Content Include="AESjs\ext.js" />
-    <Content Include="AESjs\gf28.js" />
-    <Content Include="AESjs\md5.js" />
-    <Content Include="AESjs\testbench.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,7 +13,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose mode: 1 - DES, 2 - Mod Calc, 3 - RSA, 4 - El-Gammal, 5 - Diffie-Hellman, 6 - MD5, 7 - SHA1, 8 - SHA2");
+            Console.WriteLine("Choose mode: 1 - DES,\n 2 - Mod Calc, \n 3 - RSA, 4 - El-Gammal, \n 5 - Diffie-Hellman, \n 6 - MD5, \n 7 - SHA1, \n 8 - SHA2, \n 9 - Blowfish, \n 10 - AES");
             switch (Console.ReadLine())
             {
 
@@ -25,10 +25,12 @@ namespace ConsoleApplication1
                 case "6": MD5Test(); break;
                 case "7": SHA1Test(); break;
                 case "8": SHA2Test(); break;
+                case "9": BlowfishTest(); break;
+                case "10": AESTest(); break;
             }
-            
+
         }
-     
+
 
 
         #region RSATest
@@ -53,7 +55,7 @@ namespace ConsoleApplication1
         public static void DESTest()
         {
 
-            CryptographyLabrary.DES Des = new CryptographyLabrary.DES();
+            DES Des = new DES();
             Des.Alphabet = "123456780".ToArray();
             Console.WriteLine("Enter text: ");
             String Text = Console.ReadLine();// Rea//"12345678123456781234567812345678123456781"; //String Text = text;
@@ -62,7 +64,7 @@ namespace ConsoleApplication1
             String decrtext = Des.Decryption(encrtext);
             Console.WriteLine("Encrypted by DES: \n" + encrtext + "\n Length = " + encrtext.Length);
             Console.WriteLine("Decrypted by DES: \n" + decrtext + "\n Length = " + decrtext.Length);
-
+            Console.ReadKey();
             //Cipher = new MyDES();
             //Cipher.Alphabet = "123456780".ToArray();
             //encrtext = Cipher.Encryption(Text);
@@ -147,5 +149,75 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
         #endregion
+
+        #region 
+        public static void BlowfishTest()
+        {
+            Console.WriteLine("Enter text: ");
+            string text = Console.ReadLine();
+            Blowfish b = new Blowfish();
+            //string str = Convert.ToString(Convert.ToInt64(text), 16);
+            //while (str.Length < 16)
+            //    str = "0" + str;
+            //var temp = str.Substring(0, 8) + " " + str.Substring(8, 8);
+            string encr = b.Encrypt(text);
+            Console.WriteLine("Encrypted text " + encr);
+
+
+            Console.WriteLine("Decrypted text " + b.Decrypt(encr));
+            //string text = "aaaaaaaa";
+            //char[] chars = text.ToCharArray();
+            //StringBuilder stringBuilder = new StringBuilder();
+            //foreach (char c in chars)
+            //{
+            //    stringBuilder.Append(((Int16)c).ToString("x"));
+            //}
+            //var t = Convert.ToUInt64(stringBuilder.ToString());
+            //var textAsHex = Convert.ToUInt64(stringBuilder.ToString(), 16);
+            //Console.WriteLine(textAsHex.ToString());
+
+            //string hexValue = textAsHex.ToString("X");
+            //string hexString = "6161616161616161";
+            //var bytes = new byte[hexString.Length / 2];
+            //for (var i = 0; i < bytes.Length; i++)
+            //{
+            //    bytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            //}
+            //System.Text.Encoding enc = new UTF8Encoding(true, true);
+            //    Console.WriteLine(enc.GetString(bytes)); // returns: "Hello world" for "48656C6C6F20776F726C64"
+
+            Console.ReadKey();
+        }
+        #endregion
+
+        #region
+        public static void AESTest()
+        {
+            Console.WriteLine("Enter text: ");
+            string text = Console.ReadLine();
+            byte[] cipherText = new byte[16];
+            byte[] decipheredText = new byte[16];
+            AES aes = new AES(AES.KeySize.Bits128);
+            aes.Cipher(text.ToUTF8(), cipherText);
+            aes.Dump();
+            Console.WriteLine("\nEncrypted Text: ");
+            BytesAsHex(cipherText);
+            aes.InvCipher(cipherText, decipheredText);
+            aes.Dump();
+            Console.WriteLine("\nDecrypted text: ");
+            Console.WriteLine(decipheredText.FromUTF8());
+            Console.ReadLine();
+        }
+
+        static void BytesAsHex(byte[] bytes)
+        {
+            for (int i = 0; i < bytes.Length; ++i)
+            {
+                Console.Write(bytes[i].ToString("x2") + " ");
+                if (i > 0 && i % 16 == 0) Console.Write("\n");
+            }
+            Console.WriteLine("");
+        }
     }
+    #endregion
 }

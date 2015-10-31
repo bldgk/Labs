@@ -38,7 +38,7 @@ namespace CryptographyLabrary
                 maxLength = ((CharIndexesInTextInBinaryFormat.Length / 64) + 1) * 64;
                 CharIndexesInTextInBinaryFormat = CharIndexesInTextInBinaryFormat.PadRight(maxLength, '0');
             }
-            BinaryTextBy64Bit = CharIndexesInTextInBinaryFormat.SplitInParts().ToList();
+            BinaryTextBy64Bit = CharIndexesInTextInBinaryFormat.SplitInParts(64).ToList();
             foreach (string Part64 in BinaryTextBy64Bit)
             {
                 for (int i = 0; i < (Part64.Length / 64); i++)

@@ -94,7 +94,7 @@ namespace CryptographyLabrary
                    String.Format("{0:X}", H1) + " " +
                     String.Format("{0:X}", H2) + " " +
                     String.Format("{0:X}", H3) + " " +
-                    String.Format("{0:X}", H4);
+                    string.Format("{0:X}", H4);
         }
         public string Hash(string input)
         {
@@ -145,7 +145,7 @@ namespace CryptographyLabrary
         }
         private void Processing()
         {
-            uint a = H0;
+            var a = H0;
             uint b = H1;
             uint c = H2;
             uint d = H3;
