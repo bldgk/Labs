@@ -20,3 +20,5 @@ W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\bin\Debug\Microsoft.Solve
 W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\bin\Debug\CryptographyLabrary.pdb
 W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\bin\Debug\NMathPremium.xml
 W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\obj\Debug\ConsoleApplication1.EllipticForm.resources
+W:\Projects\githubprojects\Labs\CC\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.GenerateResource.Cache

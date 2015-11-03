@@ -46,6 +46,9 @@
     <Compile Include="AES.cs" />
     <Compile Include="Blowfish.cs" />
     <Compile Include="Cesar.cs" />
+    <Compile Include="DSA.cs" />
+    <Compile Include="DSABigInteger.cs" />
+    <Compile Include="Elliptic.cs" />
     <Compile Include="ICipher.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="Cycle.cs" />
@@ -63,6 +66,7 @@
     </Compile>
     <Compile Include="RandomProvider.cs" />
     <Compile Include="RSA.cs" />
+    <Compile Include="RSABigInteger.cs" />
     <Compile Include="SHA1.cs" />
     <Compile Include="SHA2.cs" />
     <Compile Include="Shtirliz.cs" />

@@ -17,14 +17,10 @@ namespace CryptographyLabrary
         public byte[] CompleteText { get; set; }
         public byte[] ByteText { get; set; }
         public uint[] W { get; set; }
-        private uint H0 { get; set; }
-        private uint H1 { get; set; }
-        private uint H2 { get; set; }
-        private uint H3 { get; set; }
-        private uint H4 { get; set; }
         private static readonly uint[] K = {
             0x5A827999,0x6ED9EBA1,0x8F1BBCDC,0xCA62C1D6
         };
+        DIGEST Digest;
         public char[] Alphabet
         {
             get
@@ -41,11 +37,11 @@ namespace CryptographyLabrary
         //Инициализация переменных:
         public void Initialization()
         {
-            H0 = 0x67452301;
-            H1 = 0xEFCDAB89;
-            H2 = 0x98BADCFE;
-            H3 = 0x10325476;
-            H4 = 0xC3D2E1F0;
+            Digest.H0 =  0x67452301;
+            Digest.H1 = 0xEFCDAB89;
+            Digest.H2 =  0x98BADCFE;
+            Digest.H3 = 0x10325476;
+            Digest.H4 = 0xC3D2E1F0;
             W = new uint[80]; ;
         }
         public void PreliminaryProcessing()
@@ -90,11 +86,11 @@ namespace CryptographyLabrary
                 Processing();
             }
 
-            return String.Format("{0:X}", H0) + " " +
-                   String.Format("{0:X}", H1) + " " +
-                    String.Format("{0:X}", H2) + " " +
-                    String.Format("{0:X}", H3) + " " +
-                    string.Format("{0:X}", H4);
+            return String.Format("{0:X}", Digest.H0) + " " +
+                   String.Format("{0:X}", Digest.H1) + " " +
+                    String.Format("{0:X}", Digest.H2) + " " +
+                    String.Format("{0:X}", Digest.H3) + " " +
+                    string.Format("{0:X}", Digest.H4);
         }
         public string Hash(string input)
         {
@@ -145,11 +141,11 @@ namespace CryptographyLabrary
         }
         private void Processing()
         {
-            var a = H0;
-            uint b = H1;
-            uint c = H2;
-            uint d = H3;
-            uint e = H4;
+            uint a = Digest.H0;
+            uint b = Digest.H1;
+            uint c = Digest.H2;
+            uint d = Digest.H3;
+            uint e = Digest.H4;
             uint T = 0;
             for (int i = 0; i < 80; i++)
             {
@@ -161,11 +157,16 @@ namespace CryptographyLabrary
                 b = a;
                 a = T;
             }
-            H0 += a;
-            H1 += b;
-            H2 += c;
-            H3 += d;
-            H4 += e;
+            Digest.H0 += a;
+            Digest.H1 += b;
+            Digest.H2 += c;
+            Digest.H3 += d;
+            Digest.H4 += e;
         }
+       
+    }
+    public struct DIGEST
+    {
+        public uint H0, H1, H2, H3, H4;
     }
 }
